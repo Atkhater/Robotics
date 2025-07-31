@@ -1,0 +1,176 @@
+<?xml version="1.0"?>
+<robot name="fred2">
+
+    <link name="world">
+        
+    </link>
+
+    <!--base link-->
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="0.5"/>
+            </geometry>
+            <material name="silver">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="0.5"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <joint name="fixed_base" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>        
+    </joint>
+
+    <!--link one-->
+    <link name="link_one">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="0.5"/>
+            </geometry>
+            <material name="silver">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="0.5"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <joint name="frame_one" type="revolute">
+        <parent link="base_link"/>
+        <child link="link_one"/>  
+        <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+        <limit effort = "50.0" velocity = "0.1" lower = "-1.57" upper = "1.57"/>
+    </joint>
+
+    <!--link two-->
+    <link name="link_two">
+        <inertial>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="0.5"/>
+            </geometry>
+            <material name="silver">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.25" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="0.5"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <joint name="frame_two" type="revolute">
+        <parent link="link_one"/>
+        <child link="link_two"/>  
+        <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+        <limit effort = "50.0" velocity = "0.1" lower = "-1.57" upper = "1.57"/>
+    </joint>
+
+    <!--link three-->
+    <link name="link_three">
+        <inertial>
+            <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="1"/>
+            </geometry>
+            <material name="silver">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <cylinder radius="0.10" length="1"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <joint name="frame_three" type="revolute">
+        <parent link="link_two"/>
+        <child link="link_three"/>   
+        <origin xyz="0.0 0.0 0.5" rpy="0.0 0.0 0.0"/>
+        <limit effort = "50.0" velocity = "0.1" lower = "-1.57" upper = "1.57"/>
+    </joint>
+
+    <!--end effector-->
+    <link name="end_eff">
+        <inertial>
+            <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+            <mass value="1.0"/>
+            <inertia ixx="0.0" ixy="0.0" ixz="0.0" iyy="0.0" iyz="0.0" izz="0.0"/>
+        </inertial>
+
+        <visual>
+            <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size = "0.1 0.1 0.1"/>
+            </geometry>
+            <material name="silver">
+                <color rgba="0.75 0.75 0.75 1"/>
+            </material>
+        </visual>
+
+        <collision>
+            <origin xyz="0.0 0.0 0.05" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <box size = "0.1 0.1 0.1"/>
+            </geometry>
+        </collision>
+
+    </link>
+
+    <joint name="end_frame" type="revolute">
+        <parent link="link_three"/>
+        <child link="end_eff"/>   
+        <origin xyz="0.0 0.0 1" rpy="0.0 0.0 0.0"/>
+        <limit effort = "50.0" velocity = "0.1" lower = "-1.57" upper = "1.57"/>
+    </joint>
+
+</robot>
